@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	// TODO Change all .animate that only changes opacity to .fadeOut or .fadeIn with a callback function
     $('#home').hide();
     $('.canvas').hide();
     $('#artGallery').hide();
@@ -338,6 +339,7 @@ $(document).ready(function(){
                 if ($('.artLinks').length == 0) {
                     // Build a list of slideshows to choose from with a intro icon
                     // generateArtDivs(typeName, top, left)
+                    // TODO Move these up higher. They shouldn't fadeIn before they are fully loaded
                     generateArtDivs('Illustrator',280,300);
                     generateArtDivs('3D-Art',530,300);
                     generateArtDivs('Photoshop',280,760);
@@ -581,6 +583,10 @@ function generateArtDivs(typeName, fromTop, fromLeft) {
 
 function slideShowCanvas(action, path) {
     if (action == 'add') {
+    	// FadeOut .artLinks to 50%
+        // TODO For some reason, I can't seem to get the .artLinks to drop behind the canvasSlide
+        $('.artLinks').fadeTo(1500, 0.5);
+        
         $('<img alt="Canvas" class="canvas" id="canvasSlide"' +
                 'src="images/canvas.png" style="display: block; ">')
             .hide()
@@ -599,6 +605,7 @@ function slideShowCanvas(action, path) {
                 $('#artGallery').animate({
                     'opacity' : 'show'
                 }, 2000);
+                
             });
     } else if (action == 'remove') {
         $('#canvasSlide').animate({'opacity' : 'hide'}, 2000, function(){
