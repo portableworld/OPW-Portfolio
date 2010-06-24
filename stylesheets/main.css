@@ -1,0 +1,144 @@
+body {
+	background-repeat: no-repeat;
+	background-image: url(../images/starfield3.png);
+	background-attachment: fixed;
+}
+
+a {
+	color: #fff;
+}
+
+#phone {
+	position: absolute;
+	top: 100px;
+	left: 100px;
+	z-index: 2;
+}
+#swirls {
+	position: absolute;
+	z-index: 3;
+	top: 110px;
+	left: 20px;
+}
+#title_box {
+	position: absolute;
+	z-index: 4;
+	left: 450px;
+	top: 10px;
+}
+body,td,th {
+	color: #FFF;
+}
+#name {
+	position: absolute;
+	top: 50px;
+	left: 500px;
+}
+#portfolio {
+	position: absolute;
+	top: 205px;
+	left: 650px;
+	z-index: 5;
+}
+#contact {
+	position: absolute;
+	top: 200px;
+	left: 500px;
+	z-index: 5;
+}
+body cite {
+	font-size: 12px;
+}
+#home {
+	position: absolute;
+	z-index: 4;
+	left: 0px;
+	top: 580px;
+}
+#canvas, #canvasSlide {
+	position: absolute;
+	top: 180px;
+	left: 190px;
+	z-index: 2;
+
+}
+
+#web_label {
+	position: absolute;
+	top: 410px;
+	left: 320px;
+	z-index: 3;
+}
+
+#art_label {
+	position: absolute;
+	top: 410px;
+	left: 760px;
+	z-index: 3;
+}
+
+#code_label {
+	position: absolute;
+	top: 660px;
+	left: 343px;
+	z-index: 3;
+}
+
+#web_stack {
+	position: absolute;
+	top: 225px;
+	left: 300px;
+	z-index: 3
+}
+
+#art_stack {
+	position: absolute;
+	top: 225px;
+	left: 760px;
+	z-index: 3;
+}
+
+#code_stack {
+	position: absolute;
+	top: 475px;
+	left: 300px;
+	z-index: 3;
+}
+
+.stack {
+	height: 173px;
+	width: 173px;
+
+}
+
+#artGallery {
+    position: absolute;
+    top: 445px;
+    z-index: 6;
+    left: 590px;
+    width: 750px;
+    height: 500px;
+}
+
+.digiArt {
+    height: 200px;
+    padding: 20px;
+    cursor: pointer;
+}
+
+#home, .stack{
+    cursor: pointer;
+}
+
+#back {
+    position : absolute;
+    z-index : 4;
+    top : 227px;
+    left : 232px;
+    cursor : pointer;
+}
+
+.artLinks {
+    z-index : 8;
+}
+
