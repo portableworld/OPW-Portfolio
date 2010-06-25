@@ -475,21 +475,28 @@ function addBackButton() {
         .click(function() {
     $('#back').fadeOut(1500);
     if ($('#web_message').length != 0) {
-                $('#web_message').animate({'opacity' : 'hide'}, 1000, function(){
+                $('#web_message').fadeOut(1000, function(){
                         $('#web_message').remove();
                     });
             }
     if ($('#slideshow').length != 0) $('#slideshow').remove();
+
             if ($('.artLinks').length != 0) {
-                    $('.artLinks').animate({'opacity' : 'hide'}, 1000, function(){
+                    $('.artLinks').fadeOut(1000, function(){
                         $('.artLinks').remove();
                     });
                 }
             if ($('#code_content').length != 0) {
-                    $('#code_content').animate({'opacity' : 'hide'}, 1000, function(){
+                    $('#code_content').fadeOut(1000, function(){
                         $('#code_content').remove();
+
                     });
-                }
+            }
+	if (('#canvasSlide').length != 0) {
+		slideShowCanvas("remove");
+	}
+        
+                
     $('#web_label').animate({
                 'top': '410px',
                 'left': '320px'
@@ -564,7 +571,9 @@ function generateArtDivs(typeName, fromTop, fromLeft) {
             }, 1500)
     // TODO Add hover like in the .stack images
     .click(function(){
-        $.ajax({
+        // First check to see if canvasSlide is on the stage
+        if ($('#canvasSlide').length == 0) {
+            $.ajax({
             type : "POST",
             url : "lib/picasa.php",
             data: "type=" + typeName,
@@ -578,6 +587,8 @@ function generateArtDivs(typeName, fromTop, fromLeft) {
 
             }
         });
+        }
+        
     });
 }
 
@@ -585,7 +596,7 @@ function slideShowCanvas(action, path) {
     if (action == 'add') {
     	// FadeOut .artLinks to 50%
         // TODO For some reason, I can't seem to get the .artLinks to drop behind the canvasSlide
-        $('.artLinks').fadeTo(1500, 0.5);
+        $('.artLinks').fadeTo(1500, 0.25).css({'cursor' : 'default'});
         
         $('<img alt="Canvas" class="canvas" id="canvasSlide"' +
                 'src="images/canvas.png" style="display: block; ">')
@@ -607,12 +618,15 @@ function slideShowCanvas(action, path) {
                 }, 2000);
                 
             });
+
+         // TODO Create 'close slideshow[x]' div
     } else if (action == 'remove') {
         $('#canvasSlide').animate({'opacity' : 'hide'}, 2000, function(){
             $('canvasSlide').remove();
+            $('#artGallery').html('').fadeOut(1000);
+            $('.artLinks').css({'cursor' : 'pointer'});
         });
     } else {
         console.log('function slideShowCanvas param did not match needed params');
     }
 }
-
