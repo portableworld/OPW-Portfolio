@@ -113,9 +113,9 @@ body cite {
 
 #artGallery {
     position: absolute;
-    top: 445px;
+    top: 305px;
     z-index: 6;
-    left: 590px;
+    left: 360px;
     width: 750px;
     height: 500px;
 }
