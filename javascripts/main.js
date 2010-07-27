@@ -116,21 +116,9 @@ $(document).ready(function(){
     });
 
     $('#home').click(function(){
-        $('.canvas').fadeOut(1000);
-        $('#code_content').animate({
-            'opacity' : 'hide'
-        }, 1000, function(){
-            $(this).remove();
-        });
-        $('#artGallery').animate({
-            'opacity' : 'hide'
-        }, 1000, function(){
-            $(this).html('');
-        });
-        //$('#back').fadeOut(1000);
-        $('#back').animate({
-            'opacity' : 'hide'
-        }, 1000, function(){$(this).remove();});
+        $('.canvas').fadeOut(1000, function(){$('#canvasSlide, close_slideshow').remove();});
+        $('#code_content, #back').fadeOut(1000, function(){$(this).remove();});
+        $('#artGallery').fadeOut(1000, function(){$(this).html('');});
         $('img:not(.canvas)').fadeIn(2500);
         $('#name').animate({
             left: '500px'
@@ -158,17 +146,10 @@ $(document).ready(function(){
         });
         // Remove Contact Info if it is on the stage
         if ($('#tBox').length != 0) {
-            $('.contact_info, #tBox').animate({
-                'opacity' : 'hide'
-            }, 1000,
-            function(){
-                $(this).remove();
-            })
+            $('.contact_info, #tBox').fadeOut(1000, function(){$(this).remove();});
         }
         if ($('#web_message').length != 0) {
-                $('#web_message').animate({'opacity' : 'hide'}, 1000, function(){
-                        $('#web_message').remove();
-                    });
+                $('#web_message').fadeOut(1000, function(){$(this).remove();});
             }
 
         if ($('.artLinks').length != 0) {
@@ -319,7 +300,9 @@ $(document).ready(function(){
             console.log ('Error: Stack ID = ' + id);
         }
 
-
+        if ($('#canvasSlide').length != 0) {
+            slideShowCanvas('remove');
+        }
         stack.animate({
             top: '225px',
             left: '335px'
@@ -615,16 +598,35 @@ function slideShowCanvas(action, path) {
                 $(path).appendTo('#artGallery');
                 $('#artGallery').animate({
                     'opacity' : 'show'
-                }, 2000);
+                }, 2000, function(){
+                    $('<div></div>')
+                .attr('id', 'close_slideshow')
+                .attr('class', 'canvas')
+                .css({
+                    'position' : 'absolute',
+                    'z-index' : '11',
+                    'top' : '230px',
+                    'left' : '830px',
+                    'cursor' : 'pointer'
+                })
+                .html('Close Slideshow [x]')
+                .hide()
+                .appendTo('body')
+                .fadeIn(2000)
+                .click(function(){
+                    slideShowCanvas('remove');
+                });
+                });
                 
             });
 
-         // TODO Create 'close slideshow[x]' div
+         
     } else if (action == 'remove') {
-        $('#canvasSlide').animate({'opacity' : 'hide'}, 2000, function(){
-            $('canvasSlide').remove();
-            $('#artGallery').html('').fadeOut(1000);
-            $('.artLinks').css({'cursor' : 'pointer'});
+        $('#artGallery').html('').fadeOut(1000);
+        $('#close_slideshow').fadeOut(1000, function(){$(this).remove();})
+        $('#canvasSlide').fadeOut(2000, function(){
+            $('#canvasSlide').remove();
+            $('.artLinks').css({'cursor' : 'pointer'}).fadeTo(1500, 1);
         });
     } else {
         console.log('function slideShowCanvas param did not match needed params');
