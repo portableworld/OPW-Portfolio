@@ -66,14 +66,14 @@ $(document).ready(function(){
      */
     $('#portfolio').click(function(){
         // Get rid of Contact Info Box if it is on the stage
-        if ($('#tBox').length != 0) {
+        if ($('#tBox').length !== 0) {
             $('.contact_info, #tBox').animate({
                 'opacity' : 'hide'
             }, 1000,
             function(){
                 $(this).remove();
-            })
-        };
+            });
+        }
 
 
 
@@ -145,14 +145,14 @@ $(document).ready(function(){
             });
         });
         // Remove Contact Info if it is on the stage
-        if ($('#tBox').length != 0) {
+        if ($('#tBox').length !== 0) {
             $('.contact_info, #tBox').fadeOut(1000, function(){$(this).remove();});
         }
-        if ($('#web_message').length != 0) {
+        if ($('#web_message').length !== 0) {
                 $('#web_message').fadeOut(1000, function(){$(this).remove();});
             }
 
-        if ($('.artLinks').length != 0) {
+        if ($('.artLinks').length !== 0) {
             $('.artLinks').fadeOut(1000);
         }
         return false;
@@ -161,9 +161,9 @@ $(document).ready(function(){
     $('#contact').click(function() {
         // If statement to test if new title_box has already been added to stage
         // Prevents multiple instances of title_box on multiple clicks
-        if ($('#tBox').length != 0) {
-            return false
-            };
+        if ($('#tBox').length !== 0) {
+            return false;
+            }
 
         // Check location of #contact. If it is lesser than 150
         // then the Portfolio Canvas is open
@@ -219,7 +219,7 @@ $(document).ready(function(){
                     }, 1000,
                     function(){
                         $(this).remove();
-                    })
+                    });
                 });
             });
 
@@ -243,7 +243,7 @@ $(document).ready(function(){
             'top' : '450px',
             'left' : '500px'
         }, 2500, function(){
-            $('.contact_info').fadeIn(2500)
+            $('.contact_info').fadeIn(2500);
             });
         // Append Div to contain contact info
         $('<div></div>')
@@ -281,7 +281,7 @@ $(document).ready(function(){
             }, 1000,
             function(){
                 $(this).remove();
-            })
+            });
         });
         return false;
     });
@@ -300,7 +300,7 @@ $(document).ready(function(){
             console.log ('Error: Stack ID = ' + id);
         }
 
-        if ($('#canvasSlide').length != 0) {
+        if ($('#canvasSlide').length !== 0) {
             slideShowCanvas('remove');
         }
         stack.animate({
@@ -309,17 +309,17 @@ $(document).ready(function(){
         }, 2000, function() {
             addBackButton();
             if (id === 'art_stack') {
-                if ($('#web_message').length != 0) {
+                if ($('#web_message').length !== 0) {
                 $('#web_message').animate({'opacity' : 'hide'}, 1000, function(){
                         $('#web_message').remove();
                     });
             }
-                if ($('#code_content').length != 0) {
+                if ($('#code_content').length !== 0) {
                     $('#code_content').animate({'opacity' : 'hide'}, 1000, function(){
                         $('#code_content').remove();
                     });
                 }
-                if ($('.artLinks').length == 0) {
+                if ($('.artLinks').length === 0) {
                     // Build a list of slideshows to choose from with a intro icon
                     // generateArtDivs(typeName, top, left)
                     // TODO Move these up higher. They shouldn't fadeIn before they are fully loaded
@@ -334,17 +334,17 @@ $(document).ready(function(){
 
                 // Display message about upcoming captions and descriptions
         } else if (id === 'code_stack') {
-            if ($('#web_message').length != 0) {
+            if ($('#web_message').length !== 0) {
                 $('#web_message').animate({'opacity' : 'hide'}, 1000, function(){
                         $('#web_message').remove();
                     });
             }
-            if ($('.artLinks').length != 0) {
+            if ($('.artLinks').length !== 0) {
                     $('.artLinks').animate({'opacity' : 'hide'}, 1000, function(){
                         $('.artLinks').remove();
                     });
                 }
-            if ($('#slideshow').length != 0) $('#slideshow').remove();
+            if ($('#slideshow').length !== 0) $('#slideshow').remove();
             $('<div></div>')
             .attr('id', 'code_content')
             .css({
@@ -360,13 +360,13 @@ $(document).ready(function(){
                 'opacity' : 'show'
             }, 1500);
         } else if (id === 'web_stack') {
-            if ($('#slideshow').length != 0) $('#slideshow').remove();
-            if ($('.artLinks').length != 0) {
+            if ($('#slideshow').length !== 0) $('#slideshow').remove();
+            if ($('.artLinks').length !== 0) {
                     $('.artLinks').animate({'opacity' : 'hide'}, 1000, function(){
                         $('.artLinks').remove();
                     });
                 }
-            if ($('#code_content').length != 0) {
+            if ($('#code_content').length !== 0) {
                     $('#code_content').animate({'opacity' : 'hide'}, 1000, function(){
                         $('#code_content').remove();
                     });
@@ -416,11 +416,11 @@ $('.label').hover(function() {
     .css('cursor', 'pointer');
 }, function() {
     $(this)
-    .css('cursor', 'default')
+    .css('cursor', 'default');
 });
 
 $('.label').click(function() {
-    id = this.id
+    id = this.id;
     id = id.split('_');
 
     $('#'+id[0]+'_stack').trigger('click');
@@ -448,7 +448,7 @@ function postLoadElements() {
 }
 
 function addBackButton() {
-    if ($('#back').length == 0) {
+    if ($('#back').length === 0) {
         $('<img alt="Go Back" id="back" src="images/back.png" />')
         .appendTo('body')
         .hide()
@@ -457,25 +457,25 @@ function addBackButton() {
         }, 2000)
         .click(function() {
     $('#back').fadeOut(1500);
-    if ($('#web_message').length != 0) {
+    if ($('#web_message').length !== 0) {
                 $('#web_message').fadeOut(1000, function(){
                         $('#web_message').remove();
                     });
             }
-    if ($('#slideshow').length != 0) $('#slideshow').remove();
+    if ($('#slideshow').length !== 0) $('#slideshow').remove();
 
-            if ($('.artLinks').length != 0) {
+            if ($('.artLinks').length !== 0) {
                     $('.artLinks').fadeOut(1000, function(){
                         $('.artLinks').remove();
                     });
                 }
-            if ($('#code_content').length != 0) {
+            if ($('#code_content').length !== 0) {
                     $('#code_content').fadeOut(1000, function(){
                         $('#code_content').remove();
 
                     });
             }
-	if (('#canvasSlide').length != 0) {
+	if (('#canvasSlide').length !== 0) {
 		slideShowCanvas("remove");
 	}
         
@@ -505,7 +505,7 @@ function addBackButton() {
 function getGithubRepos() {
     var content = ""; // HTML that gets returned
     $.getJSON('http://github.com/api/v2/json/repos/show/portableworld?callback=?', function(data) {
-        if (data != null) {
+        if (data !== null) {
             for (var i = 0; i < data.repositories.length; i++) {
                 content += "<a href='" + data.repositories[i].url + "' target='_blank'>" +
                 data.repositories[i].name + "</a>" +
@@ -555,7 +555,7 @@ function generateArtDivs(typeName, fromTop, fromLeft) {
     // TODO Add hover like in the .stack images
     .click(function(){
         // First check to see if canvasSlide is on the stage
-        if ($('#canvasSlide').length == 0) {
+        if ($('#canvasSlide').length === 0) {
             $.ajax({
             type : "POST",
             url : "lib/picasa.php",
@@ -577,7 +577,7 @@ function generateArtDivs(typeName, fromTop, fromLeft) {
 
 function slideShowCanvas(action, path) {
     if (action == 'add') {
-    	// FadeOut .artLinks to 50%
+        // FadeOut .artLinks to 50%
         // TODO For some reason, I can't seem to get the .artLinks to drop behind the canvasSlide
         $('.artLinks').fadeTo(1500, 0.25).css({'cursor' : 'default'});
         
@@ -623,7 +623,7 @@ function slideShowCanvas(action, path) {
          
     } else if (action == 'remove') {
         $('#artGallery').html('').fadeOut(1000);
-        $('#close_slideshow').fadeOut(1000, function(){$(this).remove();})
+        $('#close_slideshow').fadeOut(1000, function(){$(this).remove();});
         $('#canvasSlide').fadeOut(2000, function(){
             $('#canvasSlide').remove();
             $('.artLinks').css({'cursor' : 'pointer'}).fadeTo(1500, 1);
